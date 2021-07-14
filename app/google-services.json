@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "746372033706",
+    "project_id": "nimble-52cdf",
+    "storage_bucket": "nimble-52cdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746372033706:android:e0ba9bf951e1a6b318b4d3",
+        "android_client_info": {
+          "package_name": "com.example.nimble"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746372033706-5uoo4im2l7dal4u1co2m8ho5qnb4buk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk5mIJpZgV2eXNeEGA_V5-ra05k3oAZUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746372033706-5uoo4im2l7dal4u1co2m8ho5qnb4buk0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
