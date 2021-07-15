@@ -2,6 +2,7 @@ package com.example.nimble.Activity;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,9 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView txt_signup;
     EditText login_email, login_password;
-    TextView signIn_btn;
+    TextView signIn_btn,forgotTextLink;
     FirebaseAuth auth;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
@@ -43,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         signIn_btn = findViewById(R.id.signin_btn);
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
+        forgotTextLink = findViewById(R.id.forgotPassword);
 
         signIn_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
                                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                finish();
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Error in login", Toast.LENGTH_SHORT).show();
@@ -81,6 +87,47 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        forgotTextLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final EditText resetMail = new EditText(v.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password ?");
+                passwordResetDialog.setMessage("Enter Your Email To Received Reset Link.");
+                passwordResetDialog.setView(resetMail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String mail = resetMail.getText().toString();
+                        auth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(LoginActivity.this, "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this, "Error ! Reset Link is Not Sent" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // close the dialog
+                    }
+                });
+
+                passwordResetDialog.create().show();
+
+            }
+        });
+
 
         txt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,5 +135,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
+
     }
 }

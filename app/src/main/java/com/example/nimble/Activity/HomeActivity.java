@@ -4,10 +4,13 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,13 +37,19 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseDatabase database;
     ArrayList<Users> usersArrayList;
     ImageView imgLogout;
-    ImageView imgSetting;
+    ImageView imgSetting,account1;
+    Toolbar toolbar;
+
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+
+
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -72,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         imgLogout = findViewById(R.id.img_logOut);
-        imgSetting = findViewById(R.id.img_Setting);
+        account1=findViewById(R.id.account);
 
         mainUserRecyclerView = findViewById(R.id.mainUserRecyclerView);
         mainUserRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -94,7 +103,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(HomeActivity.this, RegistrationActivity.class));
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                     }
                 });
 
@@ -109,13 +118,34 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        imgSetting.setOnClickListener(new View.OnClickListener() {
+        account1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, SettingActivity.class));
+                startActivity(new Intent(HomeActivity.this, account.class));
             }
         });
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_add:
+                Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_delete:
+                Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

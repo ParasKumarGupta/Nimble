@@ -9,6 +9,9 @@
         <item name="colorControlNormal">@color/colorText</item>
         <item name="colorControlActivated">@color/colorText</item>
     </style>
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/aclonica</item>
+    </style>
     <!--designs login_bkogin and register-->
 
 

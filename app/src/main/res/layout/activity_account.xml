@@ -7,7 +7,7 @@
     android:layout_gravity="center_vertical"
     android:gravity="start"
     android:orientation="vertical"
-    tools:context=".Activity.SettingActivity">
+    tools:context=".Activity.account">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,27 +24,17 @@
             android:fontFamily="@font/spartan_bold"
             android:paddingStart="@dimen/_10sdp"
             android:paddingLeft="@dimen/_10sdp"
-            android:text="Edit Profile"
+            android:text="My Account"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
             />
 
-        <ImageView
-            android:id="@+id/save"
-            android:layout_width="@dimen/_20sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_5sdp"
-            android:background="@drawable/round_black_shape"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_baseline_done_24"
-            app:tint="@color/white" />
 
     </LinearLayout>
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/setting_image"
+        android:id="@+id/account_image"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_gravity="center"
@@ -54,8 +44,8 @@
         app:civ_border_color="@color/blue"
         app:civ_border_width="@dimen/_2sdp" />
 
-    <EditText
-        android:id="@+id/setting_name"
+    <TextView
+        android:id="@+id/account_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
@@ -63,6 +53,7 @@
         android:fontFamily="@font/spartan_regular"
         android:gravity="start"
         android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_action_user"
         android:padding="@dimen/_10sdp"
         android:paddingStart="@dimen/_10sdp"
         android:paddingLeft="@dimen/_10sdp"
@@ -70,9 +61,27 @@
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/account_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/edtprofile_shape"
+        android:fontFamily="@font/spartan_regular"
+        android:gravity="start"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:padding="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingLeft="@dimen/_10sdp"
+        android:text="Email Address"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/setting_status"
+
+
+    <TextView
+        android:id="@+id/account_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
@@ -84,4 +93,17 @@
         android:textSize="@dimen/_10sdp"
         android:textStyle="normal" />
 
+    <Button
+        android:id="@+id/changeProfile"
+        style="@style/profilebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="2dp"
+        android:text="Change Profile"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toEndOf="@+id/acc"
+        app:layout_constraintTop_toTopOf="@+id/acc" />
 </LinearLayout>

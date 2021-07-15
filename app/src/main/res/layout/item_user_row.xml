@@ -18,8 +18,8 @@
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             android:src="@drawable/profile"
-            app:civ_border_color="@color/primary_purple"
-            app:civ_border_width="2dp" />
+            app:civ_border_color="@color/blue"
+            app:civ_border_width="5dp" />
 
         <LinearLayout
             android:layout_gravity="center"
@@ -31,7 +31,7 @@
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_15sdp"
                 android:paddingRight="@dimen/_5sdp"
                 android:fontFamily="@font/spartan_bold"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:paddingRight="@dimen/_5sdp"
-                android:textColor="@color/black"
+                android:textColor="@color/colorAccent"
                 android:fontFamily="@font/spartan_regular"
                 android:text="Status"
                 android:paddingEnd="@dimen/_5sdp" />

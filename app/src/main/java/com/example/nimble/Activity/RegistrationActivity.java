@@ -120,6 +120,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                                                 {
                                                                     progressDialog.dismiss();
                                                                     startActivity(new Intent(RegistrationActivity.this,HomeActivity.class));
+                                                                    finish();
                                                                 }else {
                                                                     Toast.makeText(RegistrationActivity.this, "Error in Creating a New user. Please Try again", Toast.LENGTH_SHORT).show();
                                                                 }
