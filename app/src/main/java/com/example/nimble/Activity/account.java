@@ -87,6 +87,7 @@ public class account extends AppCompatActivity {
         changeProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // open gallery
                 Intent i = new Intent(v.getContext(),SettingActivity.class);
                 startActivity(i);
 

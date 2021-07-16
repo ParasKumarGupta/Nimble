@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
         usersArrayList = new ArrayList<>();
 
         if (auth.getCurrentUser() == null) {
-            startActivity(new Intent(HomeActivity.this, RegistrationActivity.class));
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
         }
 
         Toast.makeText(this, "Data is Fetching...", Toast.LENGTH_SHORT).show();
@@ -128,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    @Override
+/*    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_items, menu);
         return super.onCreateOptionsMenu(menu);
@@ -137,16 +138,20 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_add:
-                Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
+            case R.id.user:
+                startActivity(new Intent(HomeActivity.this, account.class));
+                //Toast.makeText(getApplicationContext(), "ADD", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.menu_delete:
+            case R.id.log:
                 Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.about:
+                Toast.makeText(getApplicationContext(), "a", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
